@@ -1,12 +1,104 @@
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
 }
 body {
-    background-color: #f8f5f0;
-    display: flex;
-    justify-content: center;
-    padding: 40px 20px;
+  background: linear-gradient(135deg, #eef2ff, #f8fafc);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container {
+  width: 90%;
+  max-width: 600px;
+  background: white;
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #1e293b;
+}
+.balance-box {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  color: white;
+  padding: 20px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.balance-box h2 {
+  font-weight: 400;
+}
+.balance-box h3 {
+  font-size: 32px;
+  margin-top: 10px;
+}
+.income-box {
+  margin-bottom: 20px;
+}
+.income-box h2 {
+  margin-bottom: 10px;
+  color: #334155;
+}
+.input-group {
+  display: flex;
+  gap: 10px;
+}
+.input-group input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  outline: none;
+}
+.input-group input:focus {
+  border-color: #6366f1;
+}
+button {
+  padding: 10px 15px;
+  border: none;
+  background: #10b981;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+button:hover {
+  background: #059669;
+}
+.transaction-box h2 {
+  margin-bottom: 10px;
+  color: #334155;
+}
+#transactionList {
+  list-style: none;
+}
+#transactionList li {
+  background: #f1f5f9;
+  padding: 12px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.transaction-title {
+  font-weight: 500;
+}
+.transaction-amount {
+  font-weight: 600;
+}
+.income {
+  color: #10b981;
+}
+.expense {
+  color: #ef4444;
 }
