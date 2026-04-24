@@ -69,9 +69,25 @@ button {
   cursor: pointer;
   transition: 0.2s;
 }
-
 button:hover {
   background: #059669;
+}
+.delete {
+    color: #10b981;
+    border: 1px solid #10b981;
+    background: transparent;
+    border-radius: 56%;
+    font-size: 20px;
+    padding: 0px 10px;
+    transition: all 0.2s;
+}
+.delete:hover{
+  border: 1px solid #ef4444;
+   color:white ;
+   background: #ef4444;
+}
+.date{
+  font-size: 10px;
 }
 .transaction-box h2 {
   margin-bottom: 10px;

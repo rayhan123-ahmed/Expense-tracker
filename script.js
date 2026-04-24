@@ -24,6 +24,7 @@ addIncomeBtn.addEventListener("click", () => {
     id: Date.now(),
     text: title,
     amount: amount,
+    date: new Date().toLocaleDateString()
   };
 
   transactions.push(transaction);
@@ -50,8 +51,8 @@ function addTransactionToDOM(transaction) {
   li.innerHTML = `
   ${transaction.text}
   <span>$${transaction.amount}</span>
-  <button onclick="removeTransaction(${transaction.id})">x</button>
-  
+  <small class="date">${transaction.date}</small>
+  <button class="delete" onclick="removeTransaction(${transaction.id})">x</button>
   `;
   transactionList.appendChild(li);
 }
