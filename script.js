@@ -74,5 +74,15 @@ function removeTransaction(id) {
   updateLocalStorage();
 }
 
+// Clear all button
+function clearAll() {
+  transactions = [];
+  updateLocalStorage();
+  updateUI();
+}
+clearBtn.addEventListener("click", () => {
+  clearAll();
+});
+
 // data will be update after load the page
 updateUI();
