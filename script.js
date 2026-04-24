@@ -3,6 +3,7 @@ const incomeTitle = document.querySelector("#incomeTitle");
 const incomeAmount = document.querySelector("#incomeAmount");
 const addIncomeBtn = document.querySelector("#addIncomeBtn");
 const transactionList = document.querySelector("#transactionList");
+const clearBtn = document.querySelector(".clear");
 
 let transactions = JSON.parse(localStorage.getItem("transactions")) || [];
 
@@ -34,6 +35,7 @@ addIncomeBtn.addEventListener("click", () => {
 
   incomeTitle.value = "";
   incomeAmount.value = "";
+  clearBtn.style.display = "block";
 });
 
 // Update UI function
@@ -55,6 +57,7 @@ function addTransactionToDOM(transaction) {
   <button class="delete" onclick="removeTransaction(${transaction.id})">x</button>
   `;
   transactionList.appendChild(li);
+  
 }
 
 function updateBalance() {
