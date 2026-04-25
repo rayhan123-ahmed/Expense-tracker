@@ -44,6 +44,12 @@ function updateUI() {
 
   transactions.forEach(addTransactionToDOM);
   updateBalance();
+
+  if (transactions.length === 0) {
+    clearBtn.style.display = "none";
+  } else {
+     clearBtn.style.display = "block";
+  }
 }
 
 // this funtion will helps to show the list on page
