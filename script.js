@@ -4,6 +4,9 @@ const incomeAmount = document.querySelector("#incomeAmount");
 const addIncomeBtn = document.querySelector("#addIncomeBtn");
 const transactionList = document.querySelector("#transactionList");
 const clearBtn = document.querySelector(".clear");
+const modal = document.querySelector("#modal");
+const cancelBtn = document.querySelector("#cancelBtn");
+const confirmBtn = document.querySelector("#confirmBtn");
 
 let transactions = JSON.parse(localStorage.getItem("transactions")) || [];
 
@@ -87,10 +90,16 @@ function clearAll() {
   updateUI();
 }
 clearBtn.addEventListener("click", () => {
-  const confirmClear = confirm('Are you sure you wanted to delete all the transactions')
-  if (confirmClear) {
-    clearAll();
-  }
+  modal.style.display = "flex";
+});
+
+cancelBtn.addEventListener("click", () => {
+  modal.style.display = "none";
+});
+
+confirmBtn.addEventListener("click", () => {
+  clearAll();
+  modal.style.display = "none";
 });
 
 // data will be update after load the page
