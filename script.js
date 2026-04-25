@@ -87,7 +87,10 @@ function clearAll() {
   updateUI();
 }
 clearBtn.addEventListener("click", () => {
-  clearAll();
+  const confirmClear = confirm('Are you sure you wanted to delete all the transactions')
+  if (confirmClear) {
+    clearAll();
+  }
 });
 
 // data will be update after load the page
