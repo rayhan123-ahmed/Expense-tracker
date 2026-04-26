@@ -129,7 +129,6 @@ button:hover {
   justify-content: center;
   align-items: center;
 }
-
 .modal-content {
   background: #fff;
   padding: 20px;
@@ -137,26 +136,31 @@ button:hover {
   width: 300px;
   text-align: center;
 }
-
 .modal-buttons {
   margin-top: 15px;
   display: flex;
   justify-content: space-between;
 }
-
 #cancelBtn {
   background: #ccc;
   border: none;
   padding: 8px 15px;
   cursor: pointer;
+  transition: all 0.3s
 }
-
+#cancelBtn:hover {
+  background: #d8d3d3;
+}
 #confirmBtn {
   background: red;
   color: white;
   border: none;
   padding: 8px 15px;
   cursor: pointer;
+  transition: all 0.3s
+}
+#confirmBtn:hover {
+  background: rgb(206, 8, 8);
 }
 
 /* responsive part */
