@@ -74,7 +74,10 @@ function addTransactionToDOM(transaction) {
   ${transaction.text}
   <span>$${transaction.amount}</span>
   <small class="date">${transaction.date}</small>
-  <button class="delete" onclick="removeTransaction(${transaction.id})">x</button>
+  <div class="btnAll">
+  <button class="delete" onclick="removeTransaction(${transaction.id})"><span class="material-icons">delete</span></button>
+  <button class="edit"><span class="material-icons">edit</span></button>
+  </div>
   `;
   transactionList.appendChild(li);
   
