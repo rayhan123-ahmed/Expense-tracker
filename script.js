@@ -7,6 +7,9 @@ const clearBtn = document.querySelector(".clear");
 const modal = document.querySelector("#modal");
 const cancelBtn = document.querySelector("#cancelBtn");
 const confirmBtn = document.querySelector("#confirmBtn");
+const typeSelect = document.querySelector("#type");
+const totalIncomeEl = document.querySelector("#totalIncome");
+const totalExpenseEl = document.querySelector("#totalExpense");
 
 let transactions = JSON.parse(localStorage.getItem("transactions")) || [];
 
@@ -15,9 +18,17 @@ function updateLocalStorage() {
   localStorage.setItem("transactions", JSON.stringify(transactions));
 }
 
+
+
 addIncomeBtn.addEventListener("click", () => {
   const title = incomeTitle.value.trim();
-  const amount = +incomeAmount.value;
+  // const amount = +incomeAmount.value;
+
+  const type = typeSelect.value;
+  const amount =
+    type === "expense"
+      ? -Number(incomeAmount.value)
+      : Number(incomeAmount.value);
 
   if (title === "" || amount === 0) {
     alert("Enter valid data");
@@ -70,8 +81,19 @@ function addTransactionToDOM(transaction) {
 }
 
 function updateBalance() {
-  const total = transactions.reduce((acc, item) => acc + item.amount, 0);
+const amounts = transactions.map(t => t.amount);
 
+const total = transactions.reduce((acc, item) => acc + item.amount, 0);
+const income = amounts
+  .filter((item) => item > 0)
+  .reduce((acc, item) => acc + item, 0);
+
+  const expense = amounts
+    .filter((item) => item < 0)
+    .reduce((acc, item) => acc + item, 0);
+
+  totalIncomeEl.innerHTML = `$${income}`
+  totalExpenseEl.innerHTML = `$${Math.abs(expense)}`
   balance.innerHTML = `$${total}`;
 }
 

@@ -1,51 +1,69 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Expense Tracker</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Expense Tracker</title>
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
 
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>💰 Expense Tracker</h1>
 
-  <div class="container">
-    <h1>💰 Expense Tracker</h1>
+      <div class="balance-box">
+        <h2>Your Balance</h2>
+        <h3 id="balance">$0</h3>
 
-    <div class="balance-box">
-      <h2>Your Balance</h2>
-      <h3 id="balance">$0</h3>
-    </div>
+        <div class="summary">
+          <div class="income-summary">
+            <h2>Income</h2>
+            <p id="totalIncome">$0</p>
+          </div>
+          <div class="expense-summary">
+            <h2>Expense</h2>
+            <p id="totalExpense">$0</p>
+          </div>
+        </div>
+      </div>
 
-    <div class="income-box">
-      <h2>Add Income</h2>
-      <div class="input-group">
-        <input type="text" id="incomeTitle" placeholder="Income Source" />
-        <input type="number" id="incomeAmount" placeholder="Amount" />
-        <button id="addIncomeBtn">+ Add</button>
+      <div class="income-box">
+        <h2>Add Income</h2>
+        <div class="input-group">
+          <select id="type">
+            <option value="" disabled selected>Select type</option>
+            <option value="income">Income</option>
+            <option value="expense">Expense</option>
+          </select>
+          <input type="text" id="incomeTitle" placeholder="Income Source" />
+          <input type="number" id="incomeAmount" placeholder="Amount" />
+          <button id="addIncomeBtn">+ Add</button>
+        </div>
+      </div>
+
+      <div class="transaction-box">
+        <h2>Transactions</h2>
+        <ul id="transactionList"></ul>
+        <button class="clear" style="display: none">Clear all</button>
       </div>
     </div>
 
-    <div class="transaction-box">
-      <h2>Transactions</h2>
-      <ul id="transactionList"></ul>
-      <button class="clear" style="display: none;">Clear all</button>
+    <div id="modal" class="modal">
+      <div class="modal-content">
+        <h3>Are you sure?</h3>
+        <p>This will delete all transactions.</p>
+        <div class="modal-buttons">
+          <button id="cancelBtn">Cancel</button>
+          <button id="confirmBtn">Yes, Delete</button>
+        </div>
+      </div>
     </div>
-  </div>
-
-  <div id="modal" class="modal">
-  <div class="modal-content">
-    <h3>Are you sure?</h3>
-    <p>This will delete all transactions.</p>
-    <div class="modal-buttons">
-      <button id="cancelBtn">Cancel</button>
-      <button id="confirmBtn">Yes, Delete</button>
-    </div>
-  </div>
-</div>
-<script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
