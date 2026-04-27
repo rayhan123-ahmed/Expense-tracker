@@ -22,7 +22,6 @@ function updateLocalStorage() {
 
 addIncomeBtn.addEventListener("click", () => {
   const title = incomeTitle.value.trim();
-  // const amount = +incomeAmount.value;
 
   const type = typeSelect.value;
   const amount =
@@ -34,15 +33,25 @@ addIncomeBtn.addEventListener("click", () => {
     alert("Enter valid data");
     return;
   }
+   
 
-  const transaction = {
-    id: Date.now(),
-    text: title,
-    amount: amount,
-    date: new Date().toLocaleDateString()
-  };
+  if (editId) {
+    transactions = transactions.map((t) =>
+      t.id === editId ? { ...t, text: title, amount: amount } : t,
+    );
 
-  transactions.push(transaction);
+    editId = null;
+    addIncomeBtn.innerText = 'Add'
+
+  } else {
+    const transaction = {
+      id: Date.now(),
+      text: title,
+      amount: amount,
+      date: new Date().toLocaleDateString(),
+    };
+    transactions.push(transaction);
+  }
 
   updateLocalStorage();
   updateUI();
@@ -135,8 +144,8 @@ let editId = null
 function editTransaction(id) {
   const transaction = transactions.find(t => t.id === id);
 
-  incomeAmount.value = transaction.text;
-  incomeTitle.value = Math.abs(transaction.amount);
+  incomeTitle.value =transaction.text ;
+  incomeAmount.value = Math.abs(transaction.amount);
 
   if (transaction.amount < 0) {
     typeSelect.value = 'expense'
