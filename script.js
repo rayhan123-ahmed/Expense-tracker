@@ -18,8 +18,6 @@ function updateLocalStorage() {
   localStorage.setItem("transactions", JSON.stringify(transactions));
 }
 
-
-
 addIncomeBtn.addEventListener("click", () => {
   const title = incomeTitle.value.trim();
 
@@ -33,7 +31,6 @@ addIncomeBtn.addEventListener("click", () => {
     alert("Enter valid data");
     return;
   }
-   
 
   if (editId) {
     transactions = transactions.map((t) =>
@@ -41,8 +38,7 @@ addIncomeBtn.addEventListener("click", () => {
     );
 
     editId = null;
-    addIncomeBtn.innerText = 'Add'
-
+    addIncomeBtn.innerText = "Add";
   } else {
     const transaction = {
       id: Date.now(),
@@ -71,7 +67,7 @@ function updateUI() {
   if (transactions.length === 0) {
     clearBtn.style.display = "none";
   } else {
-     clearBtn.style.display = "block";
+    clearBtn.style.display = "block";
   }
 }
 
@@ -89,23 +85,22 @@ function addTransactionToDOM(transaction) {
   </div>
   `;
   transactionList.appendChild(li);
-  
 }
 
 function updateBalance() {
-const amounts = transactions.map(t => t.amount);
+  const amounts = transactions.map((t) => t.amount);
 
-const total = transactions.reduce((acc, item) => acc + item.amount, 0);
-const income = amounts
-  .filter((item) => item > 0)
-  .reduce((acc, item) => acc + item, 0);
+  const total = transactions.reduce((acc, item) => acc + item.amount, 0);
+  const income = amounts
+    .filter((item) => item > 0)
+    .reduce((acc, item) => acc + item, 0);
 
   const expense = amounts
     .filter((item) => item < 0)
     .reduce((acc, item) => acc + item, 0);
 
-  totalIncomeEl.innerHTML = `$${income}`
-  totalExpenseEl.innerHTML = `$${Math.abs(expense)}`
+  totalIncomeEl.innerHTML = `$${income}`;
+  totalExpenseEl.innerHTML = `$${Math.abs(expense)}`;
   balance.innerHTML = `$${total}`;
 }
 
@@ -136,28 +131,26 @@ confirmBtn.addEventListener("click", () => {
   modal.style.display = "none";
 });
 
-
 // edit function
 
-let editId = null
+let editId = null;
 
 function editTransaction(id) {
-  const transaction = transactions.find(t => t.id === id);
+  const transaction = transactions.find((t) => t.id === id);
 
-  incomeTitle.value =transaction.text ;
+  incomeTitle.value = transaction.text;
   incomeAmount.value = Math.abs(transaction.amount);
 
   if (transaction.amount < 0) {
-    typeSelect.value = 'expense'
+    typeSelect.value = "expense";
   } else {
-     typeSelect.value = "income";
+    typeSelect.value = "income";
   }
 
-  editId = id
+  editId = id;
 
   addIncomeBtn.innerText = "Update";
 }
-
 
 // data will be update after load the page
 updateUI();
