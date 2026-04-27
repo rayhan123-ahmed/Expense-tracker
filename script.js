@@ -76,7 +76,7 @@ function addTransactionToDOM(transaction) {
   <small class="date">${transaction.date}</small>
   <div class="btnAll">
   <button class="delete" onclick="removeTransaction(${transaction.id})"><span class="material-icons">delete</span></button>
-  <button class="edit"><span class="material-icons">edit</span></button>
+  <button class="edit" onclick="editTransaction(${transaction.id})"><span class="material-icons">edit</span></button>
   </div>
   `;
   transactionList.appendChild(li);
@@ -126,6 +126,29 @@ confirmBtn.addEventListener("click", () => {
   clearAll();
   modal.style.display = "none";
 });
+
+
+// edit function
+
+let editId = null
+
+function editTransaction(id) {
+  const transaction = transactions.find(t => t.id === id);
+
+  incomeAmount.value = transaction.text;
+  incomeTitle.value = Math.abs(transaction.amount);
+
+  if (transaction.amount < 0) {
+    typeSelect.value = 'expense'
+  } else {
+     typeSelect.value = "income";
+  }
+
+  editId = id
+
+  addIncomeBtn.innerText = "Update";
+}
+
 
 // data will be update after load the page
 updateUI();
