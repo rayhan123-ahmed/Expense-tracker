@@ -154,3 +154,28 @@ function editTransaction(id) {
 
 // data will be update after load the page
 updateUI();
+
+// dark mood functionality
+
+const toggleBtn = document.querySelector("#themeToggle");
+const icon = document.querySelector("#icon");
+
+// saved mood
+if (localStorage.getItem("theme") === "dark") {
+  document.body.classList.add("dark");
+  icon.textContent = "☀️";
+}
+
+// toggle theme
+
+toggleBtn.addEventListener("click", () => {
+  document.body.classList.toggle("dark");
+
+  if (document.body.classList.contains("dark")) {
+    icon.textContent = "☀️";
+    localStorage.setItem("theme", "dark");
+  } else {
+    icon.textContent = "🌙";
+    localStorage.setItem("theme", "light");
+  }
+});

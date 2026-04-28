@@ -255,6 +255,9 @@ body.dark select {
 body.dark #themeToggle {
   background: #334155;
 }
+body.dark #transactionList{
+  color: #1f2937;
+}
 
 /* responsive part */
 
