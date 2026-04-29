@@ -258,6 +258,9 @@ body.dark #themeToggle {
 body.dark #transactionList{
   color: #1f2937;
 }
+body.dark .modal-content{
+  color: #0f172a;
+}
 
 /* responsive part */
 
